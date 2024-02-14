@@ -59,7 +59,45 @@ int main(int argc, char *argv[])
     }
 
     free(person);
-    checkIt();
 
+    // Step six involves getting a series of C stings
+    char *stringBuffer = (char *)malloc(sizeof(BLOCK_SIZE));
+    size_t bufferSize = BLOCK_SIZE;
+    size_t bufferOffset = 0;
+
+    char *string;
+
+    while (string = getNext())
+    {
+        // get string size
+        size_t remainingBytes = strlen(string);
+        size_t stringOffset = 0;
+
+        while (1)
+        {
+            printf("RB %d | BS %d | ", remainingBytes, bufferSize);
+            if (remainingBytes < bufferSize)
+            {
+                printf("Writing everything\n");
+                memcpy(stringBuffer + bufferOffset, string + stringOffset, remainingBytes); // commit everything
+                bufferSize -= remainingBytes;
+                bufferOffset += remainingBytes;
+                break;
+            }
+
+            printf("Writing %d bytes\n", bufferSize);
+            memcpy(stringBuffer + bufferOffset, string + stringOffset, bufferSize); // commit what you can
+            commitBlock(stringBuffer);
+            stringOffset += bufferSize;
+            remainingBytes -= bufferSize;
+            bufferSize = BLOCK_SIZE;
+            bufferOffset = 0;
+        }
+    }
+    
+    commitBlock(stringBuffer);
+    free(stringBuffer);
+
+    checkIt();
     return 0;
 }
