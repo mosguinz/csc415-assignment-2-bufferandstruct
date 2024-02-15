@@ -19,11 +19,7 @@
 
 int main(int argc, char *argv[])
 {
-
-    for (int i = 0; i < argc; i++)
-    {
-        printf("%d. %s\n", i, argv[i]);
-    }
+    
     if (argc < 4)
     {
         return -1;
@@ -74,17 +70,14 @@ int main(int argc, char *argv[])
 
         while (1)
         {
-            printf("RB %d | BS %d | ", remainingBytes, bufferSize);
             if (remainingBytes < bufferSize)
             {
-                printf("Writing everything\n");
                 memcpy(stringBuffer + bufferOffset, string + stringOffset, remainingBytes); // commit everything
                 bufferSize -= remainingBytes;
                 bufferOffset += remainingBytes;
                 break;
             }
 
-            printf("Writing %d bytes\n", bufferSize);
             memcpy(stringBuffer + bufferOffset, string + stringOffset, bufferSize); // commit what you can
             commitBlock(stringBuffer);
             stringOffset += bufferSize;
