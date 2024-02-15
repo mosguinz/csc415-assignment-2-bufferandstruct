@@ -59,9 +59,8 @@ int main(int argc, char *argv[])
     }
 
     free(person);
-
     // Step six involves getting a series of C stings
-    char *stringBuffer = (char *)malloc(sizeof(BLOCK_SIZE));
+    char *stringBuffer = (char *)malloc(BLOCK_SIZE);
     size_t bufferSize = BLOCK_SIZE;
     size_t bufferOffset = 0;
 
@@ -94,7 +93,7 @@ int main(int argc, char *argv[])
             bufferOffset = 0;
         }
     }
-    
+
     commitBlock(stringBuffer);
     free(stringBuffer);
 
