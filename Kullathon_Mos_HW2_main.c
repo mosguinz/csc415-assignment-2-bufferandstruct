@@ -31,7 +31,14 @@ int main(int argc, char *argv[])
     person->lastName = argv[2];
     person->studentID = 921425216;
     person->level = JUNIOR;
-    person->languages = (KNOWLEDGE_OF_JAVA | KNOWLEDGE_OF_CPLUSPLUS | KNOWLEDGE_OF_MIPS_ASSEMBLER);
+    person->languages = (KNOWLEDGE_OF_C |
+                         KNOWLEDGE_OF_JAVA |
+                         KNOWLEDGE_OF_JAVASCRIPT |
+                         KNOWLEDGE_OF_PYTHON |
+                         KNOWLEDGE_OF_CPLUSPLUS |
+                         KNOWLEDGE_OF_SQL |
+                         KNOWLEDGE_OF_HTML |
+                         KNOWLEDGE_OF_MIPS_ASSEMBLER);
 
     // Truncate message length to 100
     strncpy(person->message, argv[3], 100);
