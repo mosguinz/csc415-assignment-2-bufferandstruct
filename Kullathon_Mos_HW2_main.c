@@ -19,7 +19,7 @@
 
 int main(int argc, char *argv[])
 {
-    
+
     if (argc < 4)
     {
         return -1;
@@ -27,7 +27,8 @@ int main(int argc, char *argv[])
 
     // Step four is to allocate (using malloc) an instantiation of the
     // personInfo structure and to populate it.
-    personalInfo *person = (personalInfo *)malloc(sizeof(personalInfo));
+
+    struct personalInfo *person = malloc(sizeof(struct personalInfo));
 
     // The firstName and the lastName are populated from the 1st
     // and second command line argument.
@@ -55,8 +56,10 @@ int main(int argc, char *argv[])
     }
 
     free(person);
+
     // Step six involves getting a series of C stings
-    char *stringBuffer = (char *)malloc(BLOCK_SIZE);
+    char *stringBuffer = malloc(BLOCK_SIZE);
+
     size_t bufferSize = BLOCK_SIZE;
     size_t bufferOffset = 0;
 
