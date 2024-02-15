@@ -19,39 +19,26 @@
 
 int main(int argc, char *argv[])
 {
-
     if (argc < 4)
     {
+        fprintf(stderr, "Not enough arguments: expected 3, got %d\n", argc - 1);
         return -1;
     }
 
-    // Step four is to allocate (using malloc) an instantiation of the
-    // personInfo structure and to populate it.
-
     struct personalInfo *person = malloc(sizeof(struct personalInfo));
 
-    // The firstName and the lastName are populated from the 1st
-    // and second command line argument.
     person->firstName = argv[1];
     person->lastName = argv[2];
-
-    // You will then assign your student ID to the studentID field,
-    // you will populate the level (gradelevel) appropriately.
     person->studentID = 921425216;
     person->level = JUNIOR;
-
-    // You will then populate the languages field.
     person->languages = (KNOWLEDGE_OF_JAVA | KNOWLEDGE_OF_CPLUSPLUS | KNOWLEDGE_OF_MIPS_ASSEMBLER);
 
-    // The last part of populating the structure is to copy the third
-    // command line parameter to the message field.
+    // Truncate message length to 100
     strncpy(person->message, argv[3], 100);
 
-    // Step five is to "write" your personal information structure
-    // by calling writePersonalInfo
-    if (writePersonalInfo(person) != 0)
+    if (writePersonalInfo(person))
     {
-        // print error here
+        fprintf(stderr, "Something went wrong writing personal information\n");
         return -2;
     }
 
