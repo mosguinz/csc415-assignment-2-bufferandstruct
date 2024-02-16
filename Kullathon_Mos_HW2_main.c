@@ -86,6 +86,9 @@ int main(int argc, char *argv[])
         }
     }
 
+    // Commit the final portion of the block, if any.
+    if (bufferSize)
+    {
     commitBlock(stringBuffer);
     free(stringBuffer);
 
