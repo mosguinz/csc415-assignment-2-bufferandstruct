@@ -57,9 +57,9 @@ int main(int argc, char *argv[])
     size_t bufferSize = BLOCK_SIZE;
     size_t bufferOffset = 0;
 
-    char *string;
+    const char *string;
 
-    while (string = getNext())
+    while ((string = getNext()))
     {
         // get string size
         size_t remainingBytes = strlen(string);
