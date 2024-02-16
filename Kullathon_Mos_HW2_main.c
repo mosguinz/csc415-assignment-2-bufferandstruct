@@ -3,11 +3,13 @@
  * Name::  Mos Kullathon
  * Student ID::  921425216
  * GitHub-Name::  mosguinz
- * Project:: Assignment 2 – Command Line Arguments
+ * Project::  Assignment 2 – Buffering and Structures
  *
  * File::  Kullathon_Mos_HW2_main.c
  *
- * Description::
+ * Description::  To demonstrate the use of pointers, buffers,
+ * block operations, and interpreting hexadecimal dumps to
+ * debug code.
  *
  **************************************************************/
 
